@@ -7,3 +7,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+
+- Use `create-react-app` to bootstrap the React application.
+- Install `node-sass` and `classnames` to use scss modules in the App.
