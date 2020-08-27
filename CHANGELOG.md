@@ -8,4 +8,7 @@ and this project adheres to
 
 ## [Unreleased]
 
-## Use `create-react-app` to bootstrap the React application.
+### Added
+
+- Use `create-react-app` to bootstrap the React application.
+- Install `node-sass` and `classnames` to use scss modules in the App.
