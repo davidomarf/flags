@@ -8,5 +8,9 @@
   .row {
     display: flex;
     justify-content: space-between;
+
+    & + .row {
+      margin-top: 3rem;
+    }
   }
 }

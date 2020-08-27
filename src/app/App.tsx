@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
+import Countries from "./Countries/Countries";
 
 import styles from "./App.module.scss";
 

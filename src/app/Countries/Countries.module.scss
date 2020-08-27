@@ -1,0 +1,52 @@
+@import "../../style/variables";
+
+div.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
+
+  div.country {
+    width: 16.5rem;
+    height: 21rem;
+
+    margin: 0 1.5em;
+    margin-bottom: 4.6875rem;
+
+    flex-basis: auto;
+
+    background-color: $white;
+
+    border-radius: 5px;
+    overflow: hidden;
+
+    div.image,
+    div.info {
+      height: 50%;
+    }
+
+    div.image {
+      background-color: lightcoral;
+    }
+    div.info {
+      margin: 1rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      div.name {
+        font-size: 1.125rem;
+        font-weight: 800;
+
+        margin-bottom: 1rem;
+      }
+      div.details {
+        font-weight: 300;
+        b {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
