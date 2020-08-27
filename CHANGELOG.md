@@ -12,3 +12,4 @@ and this project adheres to
 
 - Use `create-react-app` to bootstrap the React application.
 - Install `node-sass` and `classnames` to use scss modules in the App.
+- Create an initial SCSS architecture.
