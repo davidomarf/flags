@@ -1,14 +1,16 @@
 import React from "react";
-import classnames from "classnames/bind";
+
+import Header from "./Header/Header";
+import SearchBar from "./SearchBar/SearchBar";
 
 import styles from "./App.module.scss";
-import Header from "./Header/Header";
-
-const cx = classnames.bind(styles);
 
 const App = () => (
-  <div className={cx("App")}>
+  <div className={styles.App}>
     <Header />
+    <div className={styles.mainContent}>
+      <SearchBar />
+    </div>
   </div>
 );
 
