@@ -14,3 +14,4 @@ and this project adheres to
 - Install `node-sass` and `classnames` to use scss modules in the App.
 - Create an initial SCSS architecture.
 - Create a responsive layout for the flags grid.
+- Call the API to get the list of countries and their flag.
