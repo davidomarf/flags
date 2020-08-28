@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import styles from "./Countries.module.scss";
 import { Country } from "../App";
 
 type CountriesProps = {
   countries: Country[];
+  focusCountry?: (e: Country) => void;
 };
 
-const Countries = ({ countries }: CountriesProps) => {
+const Countries = ({ countries, focusCountry }: CountriesProps) => {
+  const handleCountryClick = useCallback(
+    (country: Country) => {
+      if (focusCountry) {
+        focusCountry(country);
+      }
+    },
+    [focusCountry]
+  );
+
   return (
     <div className={styles.container}>
-      {countries.map((e) => (
-        <div className={styles.country} key={e.name}>
+      {countries.map((e, i) => (
+        <div
+          className={styles.country}
+          key={e.name}
+          onClick={() => handleCountryClick(e)}
+        >
           <div className={styles.fullHeightContainer}>
             <div
               className={styles.image}

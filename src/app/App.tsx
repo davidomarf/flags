@@ -1,4 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, {
+  useState,
+  useCallback,
+  useRef,
+  RefObject,
+  useEffect
+} from "react";
 import { useQuery } from "react-query";
 
 import Header from "./Header/Header";
@@ -36,7 +42,18 @@ type Currency = {
   symbol: string;
 };
 
+const scrollToRef = (ref: RefObject<HTMLDivElement>) =>
+  ref?.current &&
+  window.scrollTo({ top: ref.current.offsetTop - 100, behavior: "smooth" });
+
 const App = () => {
+  const executeScroll = () => scrollToRef(focusedCountryRef);
+
+  const focusedCountryRef = useRef<HTMLDivElement>(null);
+
+  const [query, setQuery] = useState<RegExp>(new RegExp("."));
+  const [focusedCountry, setFocusedCountry] = useState<Country>();
+
   const { data, isLoading, error } = useQuery<Country[]>(
     "Countries",
     async () =>
@@ -45,14 +62,23 @@ const App = () => {
       )
   );
 
-  const [query, setQuery] = useState<RegExp>(new RegExp("."));
-
   const searchFor = useCallback(
     (query: string) => {
       setQuery(new RegExp(query, "i"));
     },
     [setQuery]
   );
+
+  const focusCountry = useCallback(
+    (country: Country) => {
+      setFocusedCountry(country);
+    },
+    [setFocusedCountry]
+  );
+
+  useEffect(() => {
+    executeScroll();
+  }, [focusedCountry]);
 
   return (
     <div className={styles.App}>
@@ -62,15 +88,23 @@ const App = () => {
           <SearchBar searchFor={searchFor} />
           <Filter />
         </div>
-        <div className={styles.row}>
-          {isLoading ? (
-            <>Loading...</>
-          ) : error ? (
-            <>Error. :(</>
-          ) : data ? (
-            <Countries countries={data.filter((e) => e.name.match(query))} />
-          ) : null}
-        </div>
+        {focusedCountry && (
+          <div className={styles.row} ref={focusedCountryRef}>
+            <Countries countries={[focusedCountry]} />
+          </div>
+        )}
+        {isLoading ? (
+          <>Loading...</>
+        ) : error ? (
+          <>Error. :(</>
+        ) : data ? (
+          <div className={styles.row}>
+            <Countries
+              countries={data.filter((e) => e.name.match(query))}
+              focusCountry={focusCountry}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );
