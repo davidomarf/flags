@@ -3,6 +3,7 @@
 div.header {
   box-sizing: border-box;
   height: 3.4em;
+
   padding: 1em 3.4em;
 
   display: flex;
@@ -16,8 +17,40 @@ div.header {
 
   div {
     display: flex;
-    button span {
-      margin-right: 0.5em;
+
+    button {
+      padding: 1em 2em;
+
+      border: none;
+      outline: none;
+      background: none;
+
+      display: flex;
+      align-items: center;
+
+      font-weight: 600;
+
+      border-radius: 10em;
+
+      cursor: pointer;
+
+      &,
+      span svg path {
+        transition: all 250ms;
+      }
+
+      span {
+        margin-right: 1em;
+      }
+
+      &:hover {
+        background: $oxford-blue;
+        color: white;
+        span svg path {
+          fill: $oxford-blue !important;
+          stroke: white;
+        }
+      }
     }
   }
 }

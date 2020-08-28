@@ -1,5 +1,7 @@
 import React from "react";
 
+import { ReactComponent as MoonLight } from "../../assets/icons/moon-light.svg";
+
 import styles from "./Header.module.scss";
 
 const Header = () => (
@@ -7,7 +9,10 @@ const Header = () => (
     <div>Where in the world?</div>
     <div>
       <button>
-        <span>O</span>Dark Mode
+        <span>
+          <MoonLight />
+        </span>
+        Dark Mode
       </button>
     </div>
   </div>
