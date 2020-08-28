@@ -9,18 +9,24 @@ div.searchBar {
 
     height: 100%;
     width: 100%;
+
     input {
+      border: none;
+      outline: none;
+
       box-sizing: border-box;
       height: 100%;
       width: 100%;
 
       padding-left: 5em;
+
+      font-weight: 600;
     }
     span {
       transform: translate(50%, 50%);
       position: absolute;
       top: 0.5em;
-      left: 1.5em;
+      left: 1.125em;
     }
   }
 }
