@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { useQuery } from "react-query";
 
 import Header from "./Header/Header";
@@ -45,12 +45,21 @@ const App = () => {
       )
   );
 
+  const [query, setQuery] = useState<RegExp>(new RegExp("."));
+
+  const searchFor = useCallback(
+    (query: string) => {
+      setQuery(new RegExp(query, "i"));
+    },
+    [setQuery]
+  );
+
   return (
     <div className={styles.App}>
       <Header />
       <div className={styles.mainContent}>
         <div className={styles.row}>
-          <SearchBar />
+          <SearchBar searchFor={searchFor} />
           <Filter />
         </div>
         <div className={styles.row}>
@@ -59,7 +68,7 @@ const App = () => {
           ) : error ? (
             <>Error. :(</>
           ) : data ? (
-            <Countries countries={data} />
+            <Countries countries={data.filter((e) => e.name.match(query))} />
           ) : null}
         </div>
       </div>
