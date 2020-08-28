@@ -16,3 +16,4 @@ and this project adheres to
 - Create a responsive layout for the flags grid.
 - Call the API to get the list of countries and their flag.
 - Implement the search function to filter the countries in the displayed list.
+- Allow the user to click in a country and see its details and scroll up to it.
