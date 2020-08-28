@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery } from "react-query";
 
 import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
@@ -7,34 +8,62 @@ import Countries from "./Countries/Countries";
 
 import styles from "./App.module.scss";
 
-const countries = [
-  {
-    name: "Germany",
-    population: 81770900,
-    region: "Europe",
-    capital: "Berlin"
-  },
-  {
-    name: "Brazil",
-    population: 201770900,
-    region: "Americas",
-    capital: "Brasilia"
-  }
-];
+export type Country = {
+  name: string;
+  topLevelDomain: string;
+  callingCodes: string;
+  capital: string;
+  region: string;
+  subregion: string;
+  population: number;
+  borders: string[];
+  nativeName: string;
+  currencies: Currency[];
+  languages: Language[];
+  flag: string;
+};
 
-const App = () => (
-  <div className={styles.App}>
-    <Header />
-    <div className={styles.mainContent}>
-      <div className={styles.row}>
-        <SearchBar />
-        <Filter />
-      </div>
-      <div className={styles.row}>
-        <Countries countries={countries.concat(countries.concat(countries))} />
+type Language = {
+  iso639_1: string;
+  iso639_2: string;
+  name: string;
+  nativeName: string;
+};
+
+type Currency = {
+  code: string;
+  name: string;
+  symbol: string;
+};
+
+const App = () => {
+  const { data, isLoading, error } = useQuery<Country[]>(
+    "Countries",
+    async () =>
+      await fetch("https://restcountries.eu/rest/v2/all").then((res) =>
+        res.json()
+      )
+  );
+
+  return (
+    <div className={styles.App}>
+      <Header />
+      <div className={styles.mainContent}>
+        <div className={styles.row}>
+          <SearchBar />
+          <Filter />
+        </div>
+        <div className={styles.row}>
+          {isLoading ? (
+            <>Loading...</>
+          ) : error ? (
+            <>Error. :(</>
+          ) : data ? (
+            <Countries countries={data} />
+          ) : null}
+        </div>
       </div>
     </div>
-  </div>
-);
-
+  );
+};
 export default App;
