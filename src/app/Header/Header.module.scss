@@ -1,0 +1,23 @@
+@import "../../style/variables";
+
+div.header {
+  box-sizing: border-box;
+  height: 3.4em;
+  padding: 1em 3.4em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.5em;
+  font-weight: 800;
+
+  background-color: $white;
+
+  div {
+    display: flex;
+    button span {
+      margin-right: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import "../../style/variables";
+
+div.container {
+  width: 100%;
+
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+
+  div.country {
+    position: relative;
+
+    width: 100%;
+    padding-bottom: calc(50% + 10rem);
+    background-color: $white;
+
+    border-radius: 5px;
+    overflow: hidden;
+
+    div.fullHeightContainer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+
+      flex-direction: column;
+
+      div.image,
+      div.info {
+        box-sizing: border-box;
+        width: 100%;
+      }
+    }
+
+    div.image {
+      background-color: lightcoral;
+      flex-grow: 1;
+    }
+
+    div.info {
+      height: fit-content;
+      padding: 1.125rem 2rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      div.name {
+        font-size: 1.125rem;
+        font-weight: 800;
+
+        margin-bottom: 1rem;
+      }
+      div.details {
+        font-weight: 300;
+        b {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

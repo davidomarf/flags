@@ -1,0 +1,26 @@
+div.searchBar {
+  box-sizing: border-box;
+  height: 3.5em;
+
+  width: 30em;
+  .field {
+    box-sizing: border-box;
+    position: relative;
+
+    height: 100%;
+    width: 100%;
+    input {
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+
+      padding-left: 5em;
+    }
+    span {
+      transform: translate(50%, 50%);
+      position: absolute;
+      top: 0.5em;
+      left: 1.5em;
+    }
+  }
+}

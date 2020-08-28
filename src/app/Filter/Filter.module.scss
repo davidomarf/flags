@@ -1,0 +1,17 @@
+@import "../../style/variables";
+
+div.filter {
+  box-sizing: border-box;
+  width: 12.5rem;
+  height: 3.5rem;
+
+  padding: 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: $white;
+
+  border-radius: 5px;
+}

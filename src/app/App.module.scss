@@ -1,0 +1,16 @@
+.App {
+  font-size: 1rem;
+}
+
+.mainContent {
+  padding: 3rem 5rem;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+
+    & + .row {
+      margin-top: 3rem;
+    }
+  }
+}
