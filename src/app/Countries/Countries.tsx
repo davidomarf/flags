@@ -16,21 +16,23 @@ const Countries = ({ countries }: CountriesProps) => {
     <div className={styles.container}>
       {countries.map((e) => (
         <div className={styles.country}>
-          <div className={styles.image}></div>
-          <div className={styles.info}>
-            <div className={styles.name}>{e.name}</div>
-            <div className={styles.details}>
-              <div>
-                <b>Population: </b>
-                {e.population.toLocaleString()}
-              </div>
-              <div>
-                <b>Region: </b>
-                {e.region}
-              </div>
-              <div>
-                <b>Capital: </b>
-                {e.capital}
+          <div className={styles.fullHeightContainer}>
+            <div className={styles.image}></div>
+            <div className={styles.info}>
+              <div className={styles.name}>{e.name}</div>
+              <div className={styles.details}>
+                <div>
+                  <b>Population: </b>
+                  {e.population.toLocaleString()}
+                </div>
+                <div>
+                  <b>Region: </b>
+                  {e.region}
+                </div>
+                <div>
+                  <b>Capital: </b>
+                  {e.capital}
+                </div>
               </div>
             </div>
           </div>
