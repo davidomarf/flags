@@ -11,7 +11,7 @@ const Countries = ({ countries }: CountriesProps) => {
   return (
     <div className={styles.container}>
       {countries.map((e) => (
-        <div className={styles.country}>
+        <div className={styles.country} key={e.name}>
           <div className={styles.fullHeightContainer}>
             <div
               className={styles.image}
