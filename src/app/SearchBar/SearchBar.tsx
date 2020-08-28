@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReactComponent as Lens } from "../../assets/icons/lens.svg";
+import { ReactComponent as Lens } from "../../assets/icons/lens-light.svg";
 
 import style from "./SearchBar.module.scss";
 
