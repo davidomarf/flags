@@ -15,6 +15,10 @@ div.header {
 
   background-color: $white;
 
+  a {
+    color: $oxford-blue;
+    text-decoration: none;
+  }
   div {
     display: flex;
 
