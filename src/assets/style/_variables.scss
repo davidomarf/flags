@@ -12,10 +12,23 @@ $gray: #858585;
 $alabaster: #fafafa;
 $white: #ffffff;
 
-$background-color: $alabaster;
-$elements-color: $white;
-$input-color: $gray;
-$text-color: $woodsmoke;
+/* --------------------------------- Themes --------------------------------- */
+
+html {
+  --background-color: #{$alabaster};
+  --elements-color: #{$white};
+  --input-color: #{$gray};
+  --text-color: #{$woodsmoke};
+  --skeleton-color: var(--elements-color);
+
+  @media (prefers-color-scheme: dark) {
+    --background-color: #{$ebony-clay};
+    --elements-color: #{$oxford-blue};
+    --input-color: #{$gray};
+    --text-color: #{$white};
+    --skeleton-color: var(--elements-color);
+  }
+}
 
 /* ------------------------------- Typography ------------------------------- */
 

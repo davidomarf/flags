@@ -28,10 +28,10 @@ div.searchBar {
 
       font-weight: 600;
 
-      background-color: $elements-color;
-      color: $text-color;
+      background-color: var(--elements-color);
+      color: var(--text-color);
       &::placeholder {
-        color: $input-color;
+        color: var(--input-color);
       }
     }
 
@@ -41,7 +41,7 @@ div.searchBar {
       top: 0.5em;
       left: 1.125em;
       svg path {
-        fill: $input-color;
+        fill: var(--input-color);
       }
     }
   }
