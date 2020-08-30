@@ -17,3 +17,6 @@ and this project adheres to
 - Call the API to get the list of countries and their flag.
 - Implement the search function to filter the countries in the displayed list.
 - Allow the user to click in a country and see its details and scroll up to it.
+- Use Routes to handle country details.
+- Toggle the color theme between light and dark, and allow to save it
+  persistently.
