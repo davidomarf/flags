@@ -1,12 +1,13 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-
-import { ReactComponent as MoonLight } from "../../assets/icons/moon-light.svg";
-
-import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import createPersistedState from "use-persisted-state";
+import { ReactComponent as MoonLight } from "../../assets/icons/moon-light.svg";
+import styles from "./Header.module.scss";
 
 const DARK_CLASS = "dark";
+
+const useIsDarkState = createPersistedState("isDark");
 
 const Header = () => {
   const systemPrefersDark = useMediaQuery(
@@ -19,7 +20,7 @@ const Header = () => {
     }
   );
 
-  const [isDark, setIsDark] = useState(systemPrefersDark);
+  const [isDark, setIsDark] = useIsDarkState(systemPrefersDark);
 
   const toggleDark = useCallback(() => {
     setIsDark((e) => !e);
