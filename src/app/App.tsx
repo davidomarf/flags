@@ -13,6 +13,7 @@ import Filter from "./Filter/Filter";
 import Countries from "./Countries/Countries";
 
 import styles from "./App.module.scss";
+import CountryDetails from "./Country/Country";
 
 export type Country = {
   name: string;
@@ -90,7 +91,7 @@ const App = () => {
         </div>
         {focusedCountry && (
           <div className={styles.row} ref={focusedCountryRef}>
-            <Countries countries={[focusedCountry]} />
+            <CountryDetails country={focusedCountry} />
           </div>
         )}
         {isLoading ? (
