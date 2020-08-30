@@ -8,7 +8,7 @@ div.container {
   row-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
 
-  div.country {
+  a.country {
     position: relative;
 
     width: 100%;
@@ -17,6 +17,8 @@ div.container {
 
     border-radius: 5px;
     overflow: hidden;
+
+    color: black;
 
     cursor: pointer;
     div.fullHeightContainer {
