@@ -1,31 +1,22 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 import { Country } from "../types/Country";
 
 import styles from "./Countries.module.scss";
+import { Link } from "react-router-dom";
 
 type CountriesProps = {
   countries: Country[];
-  focusCountry?: (e: Country) => void;
 };
 
-const Countries = ({ countries, focusCountry }: CountriesProps) => {
-  const handleCountryClick = useCallback(
-    (country: Country) => {
-      if (focusCountry) {
-        focusCountry(country);
-      }
-    },
-    [focusCountry]
-  );
-
+const Countries = ({ countries }: CountriesProps) => {
   return (
     <div className={styles.container}>
       {countries.map((e, i) => (
-        <div
+        <Link
+          to={"countries/" + e.alpha3Code}
           className={styles.country}
           key={e.name}
-          onClick={() => handleCountryClick(e)}
         >
           <div className={styles.fullHeightContainer}>
             <div
@@ -55,7 +46,7 @@ const Countries = ({ countries, focusCountry }: CountriesProps) => {
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
