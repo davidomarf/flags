@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
 
+import { Country } from "../types/Country";
+
 import styles from "./Countries.module.scss";
-import { Country } from "../App";
 
 type CountriesProps = {
   countries: Country[];
