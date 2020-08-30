@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,10 +13,11 @@ import { Country } from "./types/Country";
 import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
-import Countries from "./Countries/Countries";
-import CountryDetails from "./CountryDetails/CountryDetails";
 
 import styles from "./App.module.scss";
+
+const Countries = lazy(() => import("./Countries/Countries"));
+const CountryDetails = lazy(() => import("./CountryDetails/CountryDetails"));
 
 const App = () => {
   const [query, setQuery] = useState<RegExp>(new RegExp("."));
@@ -48,7 +49,9 @@ const App = () => {
                 <Filter />
               </div>
               <div className={styles.row}>
-                <CountryDetails />
+                <Suspense fallback={<></>}>
+                  <CountryDetails />
+                </Suspense>
               </div>
             </Route>
             <Route path="/" exact>
@@ -56,18 +59,17 @@ const App = () => {
                 <SearchBar searchFor={searchFor} />
                 <Filter />
               </div>
-
-              <div className={styles.row}>
-                {isLoading ? (
-                  <>Loading...</>
-                ) : error ? (
-                  <>Error. :(</>
-                ) : data ? (
-                  <Countries
-                    countries={data.filter((e) => e.name?.match(query))}
-                  />
-                ) : null}
-              </div>
+              <Suspense fallback={<></>}>
+                <div className={styles.row}>
+                  {isLoading || error ? (
+                    <></>
+                  ) : data ? (
+                    <Countries
+                      countries={data.filter((e) => e.name?.match(query))}
+                    />
+                  ) : null}
+                </div>
+              </Suspense>
             </Route>
             <Redirect to="/" />
           </Switch>
