@@ -2,7 +2,7 @@ import React from "react";
 
 import { Country } from "../types/Country";
 
-import styles from "./Country.module.scss";
+import styles from "./CountryDetails.module.scss";
 
 type CountryProps = {
   country: Country;

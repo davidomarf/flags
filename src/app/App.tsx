@@ -13,7 +13,7 @@ import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
 import Countries from "./Countries/Countries";
-import CountryDetails from "./Country/Country";
+import CountryDetails from "./CountryDetails/CountryDetails";
 
 import styles from "./App.module.scss";
 
