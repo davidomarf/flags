@@ -13,12 +13,12 @@ div.container {
 
     width: 100%;
     padding-bottom: calc(50% + 10rem);
-    background-color: $white;
+    background-color: $elements-color;
 
     border-radius: 5px;
     overflow: hidden;
 
-    color: black;
+    color: $text-color;
 
     cursor: pointer;
     div.fullHeightContainer {
@@ -38,7 +38,7 @@ div.container {
     }
 
     div.image {
-      background-color: lightcoral;
+      background-color: mix($background-color, $text-color, 92%);
       flex-grow: 1;
     }
 
