@@ -13,10 +13,10 @@ div.header {
   font-size: 1.5em;
   font-weight: 800;
 
-  background-color: $white;
+  background-color: $elements-color;
 
   a {
-    color: $oxford-blue;
+    color: $text-color;
     text-decoration: none;
   }
   div {
@@ -36,11 +36,15 @@ div.header {
 
       border-radius: 10em;
 
+      color: $text-color;
+
       cursor: pointer;
 
       &,
       span svg path {
         transition: all 250ms;
+        fill: $text-color !important;
+        stroke: white;
       }
 
       span {
@@ -48,11 +52,11 @@ div.header {
       }
 
       &:hover {
-        background: $oxford-blue;
-        color: white;
+        background: $text-color;
+        color: $ebony-clay;
         span svg path {
-          fill: $oxford-blue !important;
-          stroke: white;
+          fill: $ebony-clay !important;
+          stroke: $ebony-clay;
         }
       }
     }
