@@ -1,14 +1,20 @@
+@import "../../assets/style/variables";
+
 div.searchBar {
   box-sizing: border-box;
   height: 3.5em;
 
   width: 30em;
+
   .field {
     box-sizing: border-box;
     position: relative;
 
     height: 100%;
     width: 100%;
+
+    border-radius: 5px;
+    overflow: hidden;
 
     input {
       border: none;
@@ -21,12 +27,22 @@ div.searchBar {
       padding-left: 5em;
 
       font-weight: 600;
+
+      background-color: $elements-color;
+      color: $text-color;
+      &::placeholder {
+        color: $input-color;
+      }
     }
+
     span {
       transform: translate(50%, 50%);
       position: absolute;
       top: 0.5em;
       left: 1.125em;
+      svg path {
+        fill: $input-color;
+      }
     }
   }
 }
