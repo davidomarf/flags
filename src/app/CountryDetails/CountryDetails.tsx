@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { Country } from "../types/Country";
 
@@ -52,9 +52,21 @@ const CountryDetails = () => {
           </div>
           <div className={styles.bottomText}>
             {country.borders && country.borders.length > 0 ? (
-              <Field name="Border Countries" values={country.borders} />
+              <div>
+                <b>Border Countries: </b>
+                {country.borders.map((e, i) => (
+                  <>
+                    <Link to={`/countries/${e}`} key={e}>
+                      {e}
+                    </Link>
+                    {i < country.borders!.length - 1 && " · "}
+                  </>
+                ))}
+              </div>
             ) : (
-              <Field name="No border countries" />
+              <div>
+                <b>No border countries</b>
+              </div>
             )}
           </div>
         </div>
@@ -104,10 +116,7 @@ type FieldProps = {
 
 const Field = ({ name, value, values }: FieldProps) => (
   <div>
-    <b>
-      {name}
-      {(value || values) && ":"}{" "}
-    </b>
+    <b>{name}: </b>
     {values ? values.join(" · ") : value}
   </div>
 );
