@@ -1,53 +1,95 @@
-import React from "react";
+import React, { memo } from "react";
+import { useParams } from "react-router-dom";
 
 import { Country } from "../types/Country";
 
 import styles from "./CountryDetails.module.scss";
+import { useQuery } from "react-query";
 
-type CountryProps = {
-  country?: Country;
-};
-const CountryDetails = ({ country }: CountryProps) => {
+const CountryDetails = () => {
+  const { id } = useParams();
+
+  const { data: country, isLoading } = useQuery<Country>(id, fetchCountry);
+
+  if (country && !isLoading) {
+    return (
+      <div className={styles.container}>
+        <div
+          className={styles.image}
+          style={{
+            backgroundImage: `url(${country.flag})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+          }}
+        ></div>
+        <div className={styles.info}>
+          <div className={styles.name}>{country.name}</div>
+          <div className={styles.details}>
+            <div className={styles.column}>
+              <Field name="Native Name" value={country.nativeName} />
+              <Field
+                name="Population"
+                value={country.population?.toLocaleString()}
+              />
+              <Field name="Region" value={country.region} />
+              <Field name="Sub-region" value={country.subregion} />
+              <Field name="Capital" value={country.capital} />
+            </div>
+            <div className={styles.column}>
+              <Field name="Top Level Domain" value={country.topLevelDomain} />
+              <Field
+                name="Currencies"
+                values={country.currencies?.map(
+                  (e) => `${e.symbol} (${e.name})`
+                )}
+              />
+              <Field
+                name="Languages"
+                values={country.languages?.map((e) => e.name)}
+              />
+            </div>
+          </div>
+          <div className={styles.bottomText}>
+            {country.borders && country.borders.length > 0 ? (
+              <Field name="Border Countries" values={country.borders} />
+            ) : (
+              <Field name="No border countries" />
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.skeleton}`}>
       <div
         className={styles.image}
         style={{
-          backgroundImage: `url(${country?.flag})`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundColor: "rgba(0, 0, 0, 0.075)"
         }}
       ></div>
       <div className={styles.info}>
-        <div className={styles.name}>{country?.name}</div>
+        <div className={styles.name}>
+          <Skeleton />
+        </div>
         <div className={styles.details}>
           <div className={styles.column}>
-            <Field name="Native Name" value={country?.nativeName} />
-            <Field
-              name="Population"
-              value={country?.population?.toLocaleString()}
-            ></Field>
-            <Field name="Region" value={country?.region} />
-            <Field name="Sub-region" value={country?.subregion} />
-            <Field name="Capital" value={country?.capital} />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
           </div>
           <div className={styles.column}>
-            <Field name="Top Level Domain" value={country?.topLevelDomain} />
-            <Field
-              name="Currencies"
-              values={country?.currencies?.map(
-                (e) => `${e.symbol} (${e.name})`
-              )}
-            />
-            <Field
-              name="Languages"
-              values={country?.languages?.map((e) => e.name)}
-            />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
           </div>
         </div>
         <div className={styles.bottomText}>
-          <Field name="Border Countries" values={country?.borders}></Field>
+          <Skeleton />
         </div>
       </div>
     </div>
@@ -62,9 +104,25 @@ type FieldProps = {
 
 const Field = ({ name, value, values }: FieldProps) => (
   <div>
-    <b>{name}: </b>
+    <b>
+      {name}
+      {(value || values) && ":"}{" "}
+    </b>
     {values ? values.join(" · ") : value}
   </div>
 );
+
+const Skeleton = memo(() => (
+  <div
+    style={{ width: `${Math.min(Math.max(Math.random(), 0.3), 0.8) * 100}%` }}
+  ></div>
+));
+
+const fetchCountry = async (id: string) =>
+  (
+    await fetch(
+      `https://restcountries.eu/rest/v2/alpha?codes=${id}`
+    ).then((res) => res.json())
+  )[0];
 
 export default CountryDetails;

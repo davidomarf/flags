@@ -38,6 +38,22 @@ div.container {
       margin-top: 4.25rem;
     }
   }
+
+  &.skeleton {
+    .name,
+    .column,
+    .bottomText {
+      div {
+        background: rgba(0, 0, 0, 0.075);
+        margin: 1.4rem 0;
+        height: 0.5rem;
+        border-radius: 10px;
+      }
+    }
+    .name div {
+      height: 1rem;
+    }
+  }
 }
 
 b {
