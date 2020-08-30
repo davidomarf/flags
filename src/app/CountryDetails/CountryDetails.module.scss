@@ -1,3 +1,5 @@
+@import "../../assets/style/variables";
+
 div.container {
   width: 100%;
   gap: 7.5rem;
@@ -36,6 +38,13 @@ div.container {
 
     .bottomText {
       margin-top: 4.25rem;
+      a {
+        text-decoration: none;
+        color: $text-color;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 
