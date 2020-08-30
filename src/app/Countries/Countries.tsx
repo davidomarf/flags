@@ -42,7 +42,7 @@ const Countries = ({ countries, focusCountry }: CountriesProps) => {
               <div className={styles.details}>
                 <div>
                   <b>Population: </b>
-                  {e.population.toLocaleString()}
+                  {e.population?.toLocaleString()}
                 </div>
                 <div>
                   <b>Region: </b>

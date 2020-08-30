@@ -5,6 +5,13 @@ import React, {
   RefObject,
   useEffect
 } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+
 import { useQuery } from "react-query";
 
 import { Country } from "./types/Country";
@@ -56,33 +63,43 @@ const App = () => {
   }, [focusedCountry]);
 
   return (
-    <div className={styles.App}>
-      <Header />
-      <div className={styles.mainContent}>
-        <div className={styles.row}>
-          <SearchBar searchFor={searchFor} />
-          <Filter />
-        </div>
-        {focusedCountry && (
-          <div className={styles.row} ref={focusedCountryRef}>
-            <CountryDetails country={focusedCountry} />
-          </div>
-        )}
-        {!focusedCountry &&
-          (isLoading ? (
-            <>Loading...</>
-          ) : error ? (
-            <>Error. :(</>
-          ) : data ? (
-            <div className={styles.row}>
-              <Countries
-                countries={data.filter((e) => e.name.match(query))}
-                focusCountry={focusCountry}
-              />
+    <Router>
+      <div className={styles.App}>
+        <Header />
+        <Switch>
+          <Route path="/countries/:id">
+            <CountryDetails />
+          </Route>
+          <Route path="/" exact>
+            <div className={styles.mainContent}>
+              <div className={styles.row}>
+                <SearchBar searchFor={searchFor} />
+                <Filter />
+              </div>
+              {focusedCountry && (
+                <div className={styles.row} ref={focusedCountryRef}>
+                  <CountryDetails country={focusedCountry} />
+                </div>
+              )}
+              {!focusedCountry &&
+                (isLoading ? (
+                  <>Loading...</>
+                ) : error ? (
+                  <>Error. :(</>
+                ) : data ? (
+                  <div className={styles.row}>
+                    <Countries
+                      countries={data.filter((e) => e.name?.match(query))}
+                      focusCountry={focusCountry}
+                    />
+                  </div>
+                ) : null)}
             </div>
-          ) : null)}
+          </Route>
+          <Redirect to="/" />
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 };
 export default App;
