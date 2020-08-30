@@ -40,32 +40,38 @@ const App = () => {
     <Router>
       <div className={styles.App}>
         <Header />
-        <Switch>
-          <Route path="/countries/:id">
-            <CountryDetails />
-          </Route>
-          <Route path="/" exact>
-            <div className={styles.mainContent}>
+        <div className={styles.mainContent}>
+          <Switch>
+            <Route path="/countries/:id">
+              <div className={styles.row}>
+                <SearchBar searchFor={searchFor} />
+                <Filter />
+              </div>
+              <div className={styles.row}>
+                <CountryDetails />
+              </div>
+            </Route>
+            <Route path="/" exact>
               <div className={styles.row}>
                 <SearchBar searchFor={searchFor} />
                 <Filter />
               </div>
 
-              {isLoading ? (
-                <>Loading...</>
-              ) : error ? (
-                <>Error. :(</>
-              ) : data ? (
-                <div className={styles.row}>
+              <div className={styles.row}>
+                {isLoading ? (
+                  <>Loading...</>
+                ) : error ? (
+                  <>Error. :(</>
+                ) : data ? (
                   <Countries
                     countries={data.filter((e) => e.name?.match(query))}
                   />
-                </div>
-              ) : null}
-            </div>
-          </Route>
-          <Redirect to="/" />
-        </Switch>
+                ) : null}
+              </div>
+            </Route>
+            <Redirect to="/" />
+          </Switch>
+        </div>
       </div>
     </Router>
   );
