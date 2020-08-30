@@ -11,7 +11,12 @@ div.filter {
   justify-content: space-between;
   align-items: center;
 
-  background-color: $white;
+  background-color: var(--elements-color);
+  color: var(--text-color);
 
   border-radius: 5px;
+
+  span svg path {
+    fill: var(--text-color);
+  }
 }

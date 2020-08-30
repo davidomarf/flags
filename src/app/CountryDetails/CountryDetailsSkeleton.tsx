@@ -3,12 +3,7 @@ import styles from "./CountryDetails.module.scss";
 
 const CountryDetailsSkeleton = () => (
   <div className={`${styles.container} ${styles.skeleton}`}>
-    <div
-      className={styles.image}
-      style={{
-        backgroundColor: "rgba(0, 0, 0, 0.075)"
-      }}
-    ></div>
+    <div className={styles.image}></div>
     <div className={styles.info}>
       <div className={styles.name}>
         <Skeleton />

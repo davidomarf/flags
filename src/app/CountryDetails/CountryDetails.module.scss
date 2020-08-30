@@ -6,9 +6,14 @@ div.container {
 
   display: flex;
 
+  color: var(--text-color);
+
   div.image {
     border-radius: 5px;
     width: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   div.info {
@@ -40,7 +45,7 @@ div.container {
       margin-top: 4.25rem;
       a {
         text-decoration: none;
-        color: $text-color;
+        color: var(--text-color);
         &:hover {
           text-decoration: underline;
         }
@@ -49,11 +54,14 @@ div.container {
   }
 
   &.skeleton {
+    div.image {
+      background: var(--skeleton-color);
+    }
     .name,
     .column,
     .bottomText {
       div {
-        background: rgba(0, 0, 0, 0.075);
+        background: var(--skeleton-color);
         margin: 1.4rem 0;
         height: 0.5rem;
         border-radius: 10px;
@@ -68,5 +76,3 @@ div.container {
 b {
   font-weight: 600;
 }
-
-// 4.25

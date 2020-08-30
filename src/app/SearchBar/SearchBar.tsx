@@ -1,6 +1,6 @@
 import React, { useCallback, ChangeEvent } from "react";
 
-import { ReactComponent as Lens } from "../../assets/icons/lens-light.svg";
+import { ReactComponent as Lens } from "../../assets/icons/lens.svg";
 
 import style from "./SearchBar.module.scss";
 

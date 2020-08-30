@@ -19,10 +19,7 @@ const CountryDetails = () => {
         <div
           className={styles.image}
           style={{
-            backgroundImage: `url(${country.flag})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover"
+            backgroundImage: `url(${country.flag})`
           }}
         ></div>
         <div className={styles.info}>
