@@ -1,0 +1,47 @@
+div.container {
+  width: 100%;
+  gap: 7.5rem;
+
+  display: flex;
+
+  div.image {
+    border-radius: 5px;
+    width: 50%;
+  }
+
+  div.info {
+    width: 50%;
+
+    padding: 2rem 0;
+    div.name {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    div.details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      font-weight: 300;
+
+      line-height: 2rem;
+      .column {
+        width: 50%;
+      }
+    }
+
+    .bottomText {
+      margin-top: 4.25rem;
+    }
+  }
+}
+
+b {
+  font-weight: 600;
+}
+
+// 4.25

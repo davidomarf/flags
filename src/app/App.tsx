@@ -7,40 +7,15 @@ import React, {
 } from "react";
 import { useQuery } from "react-query";
 
+import { Country } from "./types/Country";
+
 import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
 import Countries from "./Countries/Countries";
+import CountryDetails from "./CountryDetails/CountryDetails";
 
 import styles from "./App.module.scss";
-
-export type Country = {
-  name: string;
-  topLevelDomain: string;
-  callingCodes: string;
-  capital: string;
-  region: string;
-  subregion: string;
-  population: number;
-  borders: string[];
-  nativeName: string;
-  currencies: Currency[];
-  languages: Language[];
-  flag: string;
-};
-
-type Language = {
-  iso639_1: string;
-  iso639_2: string;
-  name: string;
-  nativeName: string;
-};
-
-type Currency = {
-  code: string;
-  name: string;
-  symbol: string;
-};
 
 const scrollToRef = (ref: RefObject<HTMLDivElement>) =>
   ref?.current &&
@@ -90,21 +65,22 @@ const App = () => {
         </div>
         {focusedCountry && (
           <div className={styles.row} ref={focusedCountryRef}>
-            <Countries countries={[focusedCountry]} />
+            <CountryDetails country={focusedCountry} />
           </div>
         )}
-        {isLoading ? (
-          <>Loading...</>
-        ) : error ? (
-          <>Error. :(</>
-        ) : data ? (
-          <div className={styles.row}>
-            <Countries
-              countries={data.filter((e) => e.name.match(query))}
-              focusCountry={focusCountry}
-            />
-          </div>
-        ) : null}
+        {!focusedCountry &&
+          (isLoading ? (
+            <>Loading...</>
+          ) : error ? (
+            <>Error. :(</>
+          ) : data ? (
+            <div className={styles.row}>
+              <Countries
+                countries={data.filter((e) => e.name.match(query))}
+                focusCountry={focusCountry}
+              />
+            </div>
+          ) : null)}
       </div>
     </div>
   );
