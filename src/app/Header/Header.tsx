@@ -2,7 +2,8 @@ import React, { useCallback, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import createPersistedState from "use-persisted-state";
-import { ReactComponent as MoonLight } from "../../assets/icons/moon-light.svg";
+import { ReactComponent as Moon } from "../../assets/icons/moon.svg";
+import { ReactComponent as Sun } from "../../assets/icons/sun.svg";
 import styles from "./Header.module.scss";
 
 const DARK_CLASS = "dark";
@@ -40,10 +41,8 @@ const Header = () => {
       <Link to="/">Where in the world?</Link>
       <div>
         <button onClick={toggleDark}>
-          <span>
-            <MoonLight />
-          </span>
-          Dark Mode
+          <span>{isDark ? <Sun /> : <Moon />}</span>
+          {isDark ? "Light" : "Dark"} Mode
         </button>
       </div>
     </div>

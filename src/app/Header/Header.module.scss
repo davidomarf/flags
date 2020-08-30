@@ -42,9 +42,8 @@ div.header {
 
       &,
       span svg path {
-        transition: all 250ms;
-        fill: var(--text-color !important);
-        stroke: white;
+        fill: var(--text-color);
+        stroke: none;
       }
 
       span {
@@ -53,10 +52,10 @@ div.header {
 
       &:hover {
         background: var(--text-color);
-        color: var(--ebony-clay);
+        color: var(--background-color);
         span svg path {
-          fill: var(--ebony-clay !important);
-          stroke: var(--ebony-clay);
+          fill: var(--background-color);
+          stroke: none;
         }
       }
     }
