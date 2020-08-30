@@ -21,7 +21,7 @@ html {
   --text-color: #{$woodsmoke};
   --skeleton-color: var(--elements-color);
 
-  @media (prefers-color-scheme: dark) {
+  &.dark {
     --background-color: #{$ebony-clay};
     --elements-color: #{$oxford-blue};
     --input-color: #{$gray};
