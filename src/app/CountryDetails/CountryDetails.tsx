@@ -1,10 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
+import { useQuery } from "react-query";
+
+import CountryDetailsSkeleton from "./CountryDetailsSkeleton";
 
 import { Country } from "../types/Country";
 
 import styles from "./CountryDetails.module.scss";
-import { useQuery } from "react-query";
 
 const CountryDetails = () => {
   const { id } = useParams();
@@ -74,38 +76,7 @@ const CountryDetails = () => {
     );
   }
 
-  return (
-    <div className={`${styles.container} ${styles.skeleton}`}>
-      <div
-        className={styles.image}
-        style={{
-          backgroundColor: "rgba(0, 0, 0, 0.075)"
-        }}
-      ></div>
-      <div className={styles.info}>
-        <div className={styles.name}>
-          <Skeleton />
-        </div>
-        <div className={styles.details}>
-          <div className={styles.column}>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-          </div>
-          <div className={styles.column}>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-          </div>
-        </div>
-        <div className={styles.bottomText}>
-          <Skeleton />
-        </div>
-      </div>
-    </div>
-  );
+  return <CountryDetailsSkeleton />;
 };
 
 type FieldProps = {
@@ -120,12 +91,6 @@ const Field = ({ name, value, values }: FieldProps) => (
     {values ? values.join(" · ") : value}
   </div>
 );
-
-const Skeleton = memo(() => (
-  <div
-    style={{ width: `${Math.min(Math.max(Math.random(), 0.3), 0.8) * 100}%` }}
-  ></div>
-));
 
 const fetchCountry = async (id: string) =>
   (
