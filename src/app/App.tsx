@@ -23,11 +23,8 @@ const App = () => {
   const [query, setQuery] = useState<RegExp>(new RegExp("."));
 
   const { data, isLoading, error } = useQuery<Country[]>(
-    "Countries",
-    async () =>
-      await fetch("https://restcountries.eu/rest/v2/all").then((res) =>
-        res.json()
-      )
+    "countries",
+    fetchCountries
   );
 
   const searchFor = useCallback(
@@ -61,8 +58,10 @@ const App = () => {
               </div>
               <Suspense fallback={<></>}>
                 <div className={styles.row}>
-                  {isLoading || error ? (
-                    <></>
+                  {isLoading ? (
+                    <Countries skeleton={true} />
+                  ) : error ? (
+                    <>We couldn't load the countries ansorrywe</>
                   ) : data ? (
                     <Countries
                       countries={data.filter((e) => e.name?.match(query))}
@@ -79,3 +78,6 @@ const App = () => {
   );
 };
 export default App;
+
+const fetchCountries = async () =>
+  await fetch("https://restcountries.eu/rest/v2/all").then((res) => res.json());
