@@ -1,13 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
+import Skeleton from "../shared/Skeleton/Skeleton";
 import styles from "./CountryDetails.module.scss";
 
 const CountryDetailsSkeleton = () => (
   <div className={`${styles.container} ${styles.skeleton}`}>
     <div className={styles.image}></div>
     <div className={styles.info}>
-      <div className={styles.name}>
-        <Skeleton />
-      </div>
+      <Skeleton className={styles.name} />
       <div className={styles.details}>
         <div className={styles.column}>
           <Skeleton />
@@ -22,17 +21,9 @@ const CountryDetailsSkeleton = () => (
           <Skeleton />
         </div>
       </div>
-      <div className={styles.bottomText}>
-        <Skeleton />
-      </div>
+      <Skeleton className={styles.bottomText} />
     </div>
   </div>
 );
 
 export default CountryDetailsSkeleton;
-
-const Skeleton = memo(() => (
-  <div
-    style={{ width: `${Math.min(Math.max(Math.random(), 0.3), 0.8) * 100}%` }}
-  ></div>
-));

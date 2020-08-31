@@ -1,9 +1,10 @@
-import React, { memo } from "react";
+import React from "react";
 
 import { Country } from "../types/Country";
 
 import styles from "./Countries.module.scss";
 import { Link } from "react-router-dom";
+import CountriesSkeleton from "./CountriesSkeleton";
 
 type CountriesProps = {
   countries?: Country[];
@@ -51,34 +52,7 @@ const Countries = ({ countries, skeleton }: CountriesProps) => {
     );
   }
 
-  const mock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-  return (
-    <div className={`${styles.container} ${styles.skeleton}`}>
-      {mock.map(() => (
-        <div className={styles.country}>
-          <div className={styles.fullHeightContainer}>
-            <div className={styles.image} />
-            <div className={styles.info}>
-              <Skeleton className={styles.name} />
-              <div className={styles.details}>
-                <Skeleton />
-                <Skeleton />
-                <Skeleton />
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  return <CountriesSkeleton />;
 };
-
-const Skeleton = memo(({ className }: { className?: string }) => (
-  <div
-    style={{ width: `${Math.min(Math.max(Math.random(), 0.3), 0.8) * 100}%` }}
-    className={className}
-  ></div>
-));
 
 export default Countries;
