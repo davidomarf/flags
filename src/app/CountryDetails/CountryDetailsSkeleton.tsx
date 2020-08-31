@@ -1,27 +1,27 @@
 import React from "react";
-import Skeleton from "../shared/Skeleton/Skeleton";
+import TextSkeleton from "../shared/Skeleton/Skeleton";
 import styles from "./CountryDetails.module.scss";
 
 const CountryDetailsSkeleton = () => (
   <div className={`${styles.container} ${styles.skeleton}`}>
     <div className={styles.image}></div>
     <div className={styles.info}>
-      <Skeleton className={styles.name} />
+      <TextSkeleton className={styles.name} />
       <div className={styles.details}>
         <div className={styles.column}>
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
+          <TextSkeleton />
+          <TextSkeleton />
+          <TextSkeleton />
+          <TextSkeleton />
+          <TextSkeleton />
         </div>
         <div className={styles.column}>
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
+          <TextSkeleton />
+          <TextSkeleton />
+          <TextSkeleton />
         </div>
       </div>
-      <Skeleton className={styles.bottomText} />
+      <TextSkeleton className={styles.bottomText} />
     </div>
   </div>
 );

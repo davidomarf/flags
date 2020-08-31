@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Countries.module.scss";
-import Skeleton from "../shared/Skeleton/Skeleton";
+import TextSkeleton from "../shared/Skeleton/Skeleton";
 
 const mock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -12,11 +12,11 @@ const CountriesSkeleton = () => (
         <div className={styles.fullHeightContainer}>
           <div className={styles.image} />
           <div className={styles.info}>
-            <Skeleton className={styles.name} />
+            <TextSkeleton className={styles.name} />
             <div className={styles.details}>
-              <Skeleton />
-              <Skeleton />
-              <Skeleton />
+              <TextSkeleton />
+              <TextSkeleton />
+              <TextSkeleton />
             </div>
           </div>
         </div>

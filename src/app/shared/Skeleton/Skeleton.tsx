@@ -1,11 +1,11 @@
 import React, { memo, CSSProperties } from "react";
 
-type SkeletonProps = {
+type TextSkeletonProps = {
   className?: string;
   style?: CSSProperties;
 };
 
-const Skeleton = memo(({ className, style }: SkeletonProps) => (
+const TextSkeleton = memo(({ className, style }: TextSkeletonProps) => (
   <div
     style={{
       width: `${Math.min(Math.max(Math.random(), 0.3), 0.8) * 100}%`,
@@ -15,4 +15,4 @@ const Skeleton = memo(({ className, style }: SkeletonProps) => (
   ></div>
 ));
 
-export default Skeleton;
+export default TextSkeleton;
