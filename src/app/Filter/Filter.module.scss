@@ -1,5 +1,10 @@
 @import "../../assets/style/variables";
 
+div.container {
+  position: relative;
+  cursor: pointer;
+}
+
 div.filter {
   box-sizing: border-box;
   width: 12.5rem;
@@ -16,7 +21,41 @@ div.filter {
 
   border-radius: 5px;
 
-  span svg path {
-    fill: var(--text-color);
+  span {
+    display: flex;
+    svg path {
+      fill: var(--text-color);
+    }
+  }
+}
+
+div.options {
+  box-sizing: border-box;
+
+  z-index: 2;
+  position: absolute;
+
+  width: 100%;
+
+  margin-top: 0.25rem;
+
+  background-color: var(--elements-color);
+  color: var(--text-color);
+
+  border-radius: 5px;
+  overflow: hidden;
+  div.option {
+    padding: 0.5rem 1.5rem;
+
+    &:hover {
+      font-weight: 600;
+    }
+
+    &:first-child {
+      padding-top: 0.75rem;
+    }
+    &:last-child {
+      padding-bottom: 0.75rem;
+    }
   }
 }
