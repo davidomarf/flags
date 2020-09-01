@@ -7,8 +7,8 @@ const mock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const CountriesSkeleton = () => (
   <div className={`${styles.container} ${styles.skeleton}`}>
-    {mock.map(() => (
-      <div className={styles.country}>
+    {mock.map((e) => (
+      <div className={styles.country} key={e}>
         <div className={styles.fullHeightContainer}>
           <div className={styles.image} />
           <div className={styles.info}>
