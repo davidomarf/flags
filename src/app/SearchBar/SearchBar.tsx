@@ -6,9 +6,10 @@ import style from "./SearchBar.module.scss";
 
 type SearchBarProps = {
   searchFor: (e: string) => void;
+  initial?: string;
 };
 
-const SearchBar = ({ searchFor }: SearchBarProps) => {
+const SearchBar = ({ searchFor, initial }: SearchBarProps) => {
   const search = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const query = event.target.value;
@@ -23,7 +24,11 @@ const SearchBar = ({ searchFor }: SearchBarProps) => {
         <span>
           <Lens />
         </span>
-        <input placeholder="Search for a country..." onChange={search}></input>
+        <input
+          placeholder="Search for a country..."
+          onChange={search}
+          value={initial}
+        ></input>
       </div>
     </div>
   );
