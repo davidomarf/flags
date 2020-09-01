@@ -15,6 +15,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
 
 import styles from "./App.module.scss";
+import BackButton from "./BackButton/BackButton";
 
 const Countries = lazy(() => import("./Countries/Countries"));
 const CountryDetails = lazy(() => import("./CountryDetails/CountryDetails"));
@@ -43,8 +44,7 @@ const App = () => {
           <Switch>
             <Route path="/countries/:id">
               <div className={styles.row}>
-                <SearchBar searchFor={searchFor} />
-                <Filter setRegion={setRegion} />
+                <BackButton />
               </div>
               <div className={styles.row}>
                 <Suspense fallback={<></>}>
