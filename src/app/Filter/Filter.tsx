@@ -5,9 +5,13 @@ import { ReactComponent as CloseIcon } from "../../assets/icons/x.svg";
 
 import styles from "./Filter.module.scss";
 
-const options = ["Africa", "America", "Asia", "Europe", "Oceania"];
+const options = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-const Filter = () => {
+type FilterProps = {
+  setRegion: (region: string) => void;
+};
+
+const Filter = ({ setRegion }: FilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState<string>();
 
@@ -20,16 +24,18 @@ const Filter = () => {
       event.stopPropagation();
       setIsOpen(false);
       setOption(option);
+      setRegion(option);
     },
-    [setOption, setIsOpen]
+    [setOption, setIsOpen, setRegion]
   );
 
   const handleClose = useCallback(
     (event: SyntheticEvent) => {
       event.stopPropagation();
       setOption((null as unknown) as string);
+      setRegion((null as unknown) as string);
     },
-    [setOption]
+    [setOption, setRegion]
   );
 
   return (
