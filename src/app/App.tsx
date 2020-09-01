@@ -55,7 +55,7 @@ const App = () => {
             <Route path="/" exact>
               <div className={styles.row}>
                 <SearchBar searchFor={searchFor} />
-                <Filter setRegion={setRegion} />
+                <Filter setRegion={setRegion} region={region} />
               </div>
               <Suspense fallback={<></>}>
                 <div className={styles.row}>
