@@ -9,11 +9,12 @@ const options = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 type FilterProps = {
   setRegion: (region: string) => void;
+  region?: string;
 };
 
-const Filter = ({ setRegion }: FilterProps) => {
+const Filter = ({ setRegion, region }: FilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [option, setOption] = useState<string>();
+  const [option, setOption] = useState<string>(region as string);
 
   const toggleOpen = useCallback(() => {
     setIsOpen((e) => !e);
@@ -72,4 +73,5 @@ const Filter = ({ setRegion }: FilterProps) => {
     </div>
   );
 };
+
 export default Filter;
