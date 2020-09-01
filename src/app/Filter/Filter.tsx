@@ -1,6 +1,7 @@
-import React, { useCallback, useState, useEffect, SyntheticEvent } from "react";
+import React, { useCallback, useState, SyntheticEvent } from "react";
 
-import { ReactComponent as ExpandIcon } from "../../assets/icons/expand.svg";
+import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron.svg";
+import { ReactComponent as CloseIcon } from "../../assets/icons/x.svg";
 
 import styles from "./Filter.module.scss";
 
@@ -11,7 +12,6 @@ const Filter = () => {
   const [option, setOption] = useState<string>();
 
   const toggleOpen = useCallback(() => {
-    console.log("toggling");
     setIsOpen((e) => !e);
   }, []);
 
@@ -24,10 +24,13 @@ const Filter = () => {
     [setOption, setIsOpen]
   );
 
-  useEffect(() => {
-    console.log(option);
-    console.log(isOpen);
-  }, [option, isOpen]);
+  const handleClose = useCallback(
+    (event: SyntheticEvent) => {
+      event.stopPropagation();
+      setOption((null as unknown) as string);
+    },
+    [setOption]
+  );
 
   return (
     <div className={styles.container}>
@@ -37,7 +40,13 @@ const Filter = () => {
         </div>
         <div className={styles.icon}>
           <span>
-            <ExpandIcon />
+            {option && !isOpen ? (
+              <CloseIcon onClick={handleClose} />
+            ) : (
+              <ChevronIcon
+                style={isOpen ? { transform: "rotate(180deg)" } : {}}
+              />
+            )}
           </span>
         </div>
       </div>

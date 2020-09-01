@@ -21,8 +21,11 @@ div.filter {
 
   border-radius: 5px;
 
-  span svg path {
-    fill: var(--text-color);
+  span {
+    display: flex;
+    svg path {
+      fill: var(--text-color);
+    }
   }
 }
 
