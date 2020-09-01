@@ -21,7 +21,8 @@ const Countries = lazy(() => import("./Countries/Countries"));
 const CountryDetails = lazy(() => import("./CountryDetails/CountryDetails"));
 
 const App = () => {
-  const [query, setQuery] = useState<RegExp>(new RegExp("."));
+  const [query, setQuery] = useState<string>();
+  const [reQuery, setReQuery] = useState<RegExp>(new RegExp("."));
   const [region, setRegion] = useState<string>();
 
   const { data, isLoading, error } = useQuery<Country[]>(
@@ -31,9 +32,10 @@ const App = () => {
 
   const searchFor = useCallback(
     (query: string) => {
-      setQuery(new RegExp(query, "i"));
+      setQuery(query);
+      setReQuery(new RegExp(query, "i"));
     },
-    [setQuery]
+    [setQuery, setReQuery]
   );
 
   return (
@@ -54,7 +56,7 @@ const App = () => {
             </Route>
             <Route path="/" exact>
               <div className={styles.row}>
-                <SearchBar searchFor={searchFor} />
+                <SearchBar searchFor={searchFor} initial={query} />
                 <Filter setRegion={setRegion} region={region} />
               </div>
               <Suspense fallback={<></>}>
@@ -67,7 +69,7 @@ const App = () => {
                     <Countries
                       countries={data.filter(
                         (e) =>
-                          e.name?.match(query) &&
+                          e.name?.match(reQuery) &&
                           (!region || e.region === region)
                       )}
                     />
