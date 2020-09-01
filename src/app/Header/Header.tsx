@@ -28,7 +28,6 @@ const Header = () => {
   }, [setIsDark]);
 
   useEffect(() => {
-    console.log(isDark);
     if (isDark) {
       document.documentElement.classList.add(DARK_CLASS);
     } else {
@@ -38,12 +37,14 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <Link to="/">Where in the world?</Link>
-      <div>
-        <button onClick={toggleDark}>
-          <span>{isDark ? <Sun /> : <Moon />}</span>
-          {isDark ? "Light" : "Dark"} Mode
-        </button>
+      <div className={styles.content}>
+        <Link to="/">Where in the world?</Link>
+        <div>
+          <button onClick={toggleDark}>
+            <span>{isDark ? <Sun /> : <Moon />}</span>
+            {isDark ? "Light" : "Dark"} Mode
+          </button>
+        </div>
       </div>
     </div>
   );

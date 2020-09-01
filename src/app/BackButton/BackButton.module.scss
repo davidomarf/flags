@@ -1,0 +1,24 @@
+a.button {
+  box-sizing: border-box;
+  height: 3.25rem;
+  padding: 0 2.125rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border-radius: 5px;
+
+  text-decoration: none;
+
+  background: var(--elements-color);
+  color: var(--text-color);
+
+  span {
+    display: flex;
+    margin-right: 0.625rem;
+    svg path {
+      fill: var(--text-color);
+    }
+  }
+}
