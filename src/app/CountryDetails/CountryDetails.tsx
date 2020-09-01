@@ -76,12 +76,13 @@ const CountryDetails = () => {
   return <CountryDetailsSkeleton />;
 };
 
+export default CountryDetails;
+
 type FieldProps = {
   name: string;
   value?: string;
   values?: string[];
 };
-
 const Field = ({ name, value, values }: FieldProps) => (
   <div>
     <b>{name}: </b>
@@ -95,5 +96,3 @@ const fetchCountry = async (id: string) =>
       `https://restcountries.eu/rest/v2/alpha?codes=${id}`
     ).then((res) => res.json())
   )[0];
-
-export default CountryDetails;

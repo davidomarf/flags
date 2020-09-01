@@ -8,7 +8,8 @@ div.container {
   row-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
 
-  a.country {
+  a.country,
+  div.country {
     position: relative;
 
     width: 100%;
@@ -40,6 +41,9 @@ div.container {
     div.image {
       background-color: var(--elements-color);
       flex-grow: 1;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
     div.info {
@@ -60,6 +64,26 @@ div.container {
         font-weight: 300;
         b {
           font-weight: 600;
+        }
+      }
+    }
+  }
+
+  &.skeleton {
+    div.info {
+      div.name,
+      div.details div {
+        background-color: var(--accent-skeleton-color);
+        border-radius: 10px;
+      }
+      div.name {
+        height: 1rem;
+      }
+      div.details {
+        margin-bottom: -0.5rem;
+        div {
+          height: 0.5rem;
+          margin: 0.85rem 0;
         }
       }
     }

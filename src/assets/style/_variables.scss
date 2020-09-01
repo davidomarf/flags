@@ -20,6 +20,7 @@ html {
   --input-color: #{$gray};
   --text-color: #{$woodsmoke};
   --skeleton-color: var(--elements-color);
+  --accent-skeleton-color: #{mix(white, black, 93%)};
 
   &.dark {
     --background-color: #{$ebony-clay};
@@ -27,6 +28,7 @@ html {
     --input-color: #{$gray};
     --text-color: #{$white};
     --skeleton-color: var(--elements-color);
+    --accent-skeleton-color: #{$ebony-clay};
   }
 }
 

@@ -54,21 +54,21 @@ div.container {
   }
 
   &.skeleton {
+    margin-top: -0.75rem;
     div.image {
       background: var(--skeleton-color);
     }
     .name,
-    .column,
-    .bottomText {
-      div {
-        background: var(--skeleton-color);
-        margin: 1.4rem 0;
-        height: 0.5rem;
-        border-radius: 10px;
-      }
+    .bottomText,
+    .column div {
+      background: var(--skeleton-color);
+      margin: 1.4rem 0;
+      height: 0.5rem;
+      border-radius: 10px;
     }
-    .name div {
-      height: 1rem;
+    .name {
+      height: 1.25rem;
+      margin-bottom: 0.65rem;
     }
   }
 }
