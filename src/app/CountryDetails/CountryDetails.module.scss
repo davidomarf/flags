@@ -5,19 +5,18 @@ div.container {
   height: fit-content;
 
   display: flex;
-  gap: 7.5rem;
   align-items: center;
+  justify-content: space-between;
 
   color: var(--text-color);
 
   img.image {
-    width: 50%;
+    width: calc(50% - (7.5rem / 2));
     border-radius: 5px;
   }
 
   div.info {
-    width: 50%;
-
+    width: calc(50% - (7.5rem / 2));
     padding: 2rem 0;
     div.name {
       font-size: 2rem;
@@ -69,12 +68,15 @@ div.container {
     margin-top: -0.75rem;
     div.image {
       background: var(--skeleton-color);
+      width: calc(50% - (7.5rem / 2));
+      padding-bottom: 28%;
+      border-radius: 5px;
     }
     .name,
     .bottomText,
     .column div {
       background: var(--skeleton-color);
-      margin: 1.4rem 0;
+      margin: 1.525rem 0;
       height: 0.5rem;
       border-radius: 10px;
     }
