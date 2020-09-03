@@ -2,18 +2,17 @@
 
 div.container {
   width: 100%;
-  gap: 7.5rem;
+  height: fit-content;
 
   display: flex;
+  gap: 7.5rem;
+  align-items: center;
 
   color: var(--text-color);
 
-  div.image {
-    border-radius: 5px;
+  img.image {
     width: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    border-radius: 5px;
   }
 
   div.info {

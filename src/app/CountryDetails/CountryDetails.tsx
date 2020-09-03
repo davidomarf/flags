@@ -19,12 +19,11 @@ const CountryDetails = ({ countryMap }: CountryDetails) => {
   if (country && !isLoading) {
     return (
       <div className={styles.container}>
-        <div
+        <img
           className={styles.image}
-          style={{
-            backgroundImage: `url(${country.flag})`
-          }}
-        ></div>
+          src={country.flag}
+          alt={country.name}
+        ></img>
         <div className={styles.info}>
           <div className={styles.name}>{country.name}</div>
           <div className={styles.details}>
