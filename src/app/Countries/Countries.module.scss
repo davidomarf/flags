@@ -20,6 +20,7 @@ div.container {
     overflow: hidden;
 
     color: var(--text-color);
+    box-shadow: 0 0 0.75rem 0.25rem rgba(0, 0, 0, 0.025);
 
     cursor: pointer;
     div.fullHeightContainer {
