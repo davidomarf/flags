@@ -8,7 +8,10 @@ import { Country } from "../types/Country";
 
 import styles from "./CountryDetails.module.scss";
 
-const CountryDetails = () => {
+type CountryDetails = {
+  countryMap?: { [key: string]: string };
+};
+const CountryDetails = ({ countryMap }: CountryDetails) => {
   const { id } = useParams();
 
   const { data: country, isLoading } = useQuery<Country>(id, fetchCountry);
@@ -56,7 +59,7 @@ const CountryDetails = () => {
                 {country.borders.map((e, i) => (
                   <>
                     <Link to={`/countries/${e}`} key={e}>
-                      {e}
+                      {countryMap ? countryMap[e] : e}
                     </Link>
                     {i < country.borders!.length - 1 && " · "}
                   </>
