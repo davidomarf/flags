@@ -27,7 +27,6 @@ div.container {
 
     div.details {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
 
       gap: 1rem;
@@ -91,4 +90,52 @@ div.container {
 
 b {
   font-weight: 600;
+}
+
+@media (min-width: 520px) and(max-width: 1000px) {
+  div.container {
+    flex-direction: column;
+    img.image,
+    div.image {
+      width: 100%;
+    }
+    div.info {
+      width: 80%;
+    }
+  }
+  &.skeleton {
+    div.image {
+      background: var(--skeleton-color);
+      padding-bottom: 60% !important;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  div.container {
+    flex-direction: column;
+    img.image,
+    div.image {
+      width: 100%;
+    }
+    div.info {
+      width: 100%;
+      div.details {
+        flex-direction: column;
+        div.column {
+          width: 100%;
+
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+    &.skeleton {
+      div.image {
+        background: var(--skeleton-color);
+        padding-bottom: 60% !important;
+      }
+    }
+  }
 }
