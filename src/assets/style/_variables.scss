@@ -19,7 +19,7 @@ html {
   --elements-color: #{$white};
   --input-color: #{$gray};
   --text-color: #{$woodsmoke};
-  --skeleton-color: var(--elements-color);
+  --skeleton-color: #{mix(white, black, 90%)};
   --accent-skeleton-color: #{mix(white, black, 93%)};
 
   &.dark {
