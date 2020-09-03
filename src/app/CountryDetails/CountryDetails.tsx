@@ -54,17 +54,16 @@ const CountryDetails = ({ countryMap }: CountryDetails) => {
           </div>
           <div className={styles.bottomText}>
             {country.borders && country.borders.length > 0 ? (
-              <div>
+              <>
                 <b>Border Countries: </b>
                 {country.borders.map((e, i) => (
                   <>
                     <Link to={`/countries/${e}`} key={e}>
                       {countryMap ? countryMap[e] : e}
                     </Link>
-                    {i < country.borders!.length - 1 && " · "}
                   </>
                 ))}
-              </div>
+              </>
             ) : (
               <div>
                 <b>No border countries</b>

@@ -43,11 +43,24 @@ div.container {
 
     .bottomText {
       margin-top: 4.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       a {
         text-decoration: none;
+
+        padding: 0.375rem 1.125rem;
+
+        border-radius: 5px;
+
+        background-color: var(--elements-color);
         color: var(--text-color);
-        &:hover {
-          text-decoration: underline;
+
+        margin-right: 0.625rem;
+        margin-bottom: 0.3125rem;
+        margin-top: 0.3125rem;
+        &:first-of-type {
+          margin-left: 0.625rem;
         }
       }
     }
