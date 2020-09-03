@@ -4,7 +4,7 @@ div.container {
   width: 100%;
 
   display: grid;
-  column-gap: 2rem;
+  column-gap: 4rem;
   row-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
 
@@ -13,7 +13,7 @@ div.container {
     position: relative;
 
     width: 100%;
-    padding-bottom: calc(50% + 10rem);
+    padding-bottom: calc(60% + 11rem);
     background-color: var(--elements-color);
 
     border-radius: 5px;
@@ -47,8 +47,8 @@ div.container {
     }
 
     div.info {
-      height: fit-content;
-      padding: 1.125rem 2rem;
+      height: 11rem;
+      padding: 0 2rem;
 
       display: flex;
       flex-direction: column;
