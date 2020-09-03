@@ -17,3 +17,14 @@
     }
   }
 }
+
+@media (max-width: 692px) {
+  div.row {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2.5rem;
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+}

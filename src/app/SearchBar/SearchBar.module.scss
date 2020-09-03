@@ -3,8 +3,9 @@
 div.searchBar {
   box-sizing: border-box;
   height: 3.5em;
-
   width: 30em;
+
+  margin-right: 2.5rem;
 
   .field {
     box-sizing: border-box;
@@ -44,5 +45,12 @@ div.searchBar {
         fill: var(--input-color);
       }
     }
+  }
+}
+
+@media (max-width: 692px) {
+  div.searchBar {
+    width: 100%;
+    margin-right: 0;
   }
 }
