@@ -100,5 +100,5 @@ const App = () => {
 };
 export default App;
 
-const fetchCountries = async () =>
-  await fetch("https://restcountries.eu/rest/v2/all").then((res) => res.json());
+const fetchCountries = () =>
+  fetch("https://restcountries.eu/rest/v2/all").then((res) => res.json());
