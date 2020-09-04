@@ -22,7 +22,7 @@ const CountryDetails = lazy(() => import("./CountryDetails/CountryDetails"));
 
 const App = () => {
   const [query, setQuery] = useState<string>();
-  const [reQuery, setReQuery] = useState<RegExp>(new RegExp("."));
+  const [reQuery, setReQuery] = useState<RegExp>(new RegExp("(?:)"));
   const [region, setRegion] = useState<string>();
   const [countryMap, setCountryMap] = useState<{ [key: string]: string }>();
 
@@ -33,8 +33,11 @@ const App = () => {
 
   const searchFor = useCallback(
     (query: string) => {
-      setQuery(query);
-      setReQuery(new RegExp(query, "i"));
+      try {
+        const safeQuery = query.replace(/[()[\]+*.?]/g, "");
+        setQuery(safeQuery);
+        setReQuery(new RegExp(safeQuery, "i"));
+      } catch {}
     },
     [setQuery, setReQuery]
   );
