@@ -13,11 +13,11 @@ import { Country } from "./types/Country";
 import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
+import Countries from "./Countries/Countries";
 
 import styles from "./App.module.scss";
 import BackButton from "./BackButton/BackButton";
 
-const Countries = lazy(() => import("./Countries/Countries"));
 const CountryDetails = lazy(() => import("./CountryDetails/CountryDetails"));
 
 const App = () => {
