@@ -13,16 +13,16 @@ import { Country } from "./types/Country";
 import Header from "./Header/Header";
 import SearchBar from "./SearchBar/SearchBar";
 import Filter from "./Filter/Filter";
+import Countries from "./Countries/Countries";
 
 import styles from "./App.module.scss";
 import BackButton from "./BackButton/BackButton";
 
-const Countries = lazy(() => import("./Countries/Countries"));
 const CountryDetails = lazy(() => import("./CountryDetails/CountryDetails"));
 
 const App = () => {
   const [query, setQuery] = useState<string>();
-  const [reQuery, setReQuery] = useState<RegExp>(new RegExp("."));
+  const [reQuery, setReQuery] = useState<RegExp>(new RegExp("(?:)"));
   const [region, setRegion] = useState<string>();
   const [countryMap, setCountryMap] = useState<{ [key: string]: string }>();
 
@@ -33,8 +33,11 @@ const App = () => {
 
   const searchFor = useCallback(
     (query: string) => {
-      setQuery(query);
-      setReQuery(new RegExp(query, "i"));
+      try {
+        const safeQuery = query.replace(/[()[\]+*.?]/g, "");
+        setQuery(safeQuery);
+        setReQuery(new RegExp(safeQuery, "i"));
+      } catch {}
     },
     [setQuery, setReQuery]
   );
@@ -100,5 +103,5 @@ const App = () => {
 };
 export default App;
 
-const fetchCountries = async () =>
-  await fetch("https://restcountries.eu/rest/v2/all").then((res) => res.json());
+const fetchCountries = () =>
+  fetch("https://restcountries.eu/rest/v2/all").then((res) => res.json());
