@@ -81,7 +81,7 @@ const App = () => {
                   {isLoading ? (
                     <Countries skeleton={true} />
                   ) : error ? (
-                    <>We couldn't load the countries ansorrywe</>
+                    <>Sorry, we couldn't load the countries.</>
                   ) : data ? (
                     <Countries
                       countries={data.filter(
