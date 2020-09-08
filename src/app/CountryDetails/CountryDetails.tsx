@@ -56,11 +56,9 @@ const CountryDetails = ({ countryMap }: CountryDetails) => {
               <>
                 <b>Border Countries: </b>
                 {country.borders.map((e, i) => (
-                  <>
-                    <Link to={`/countries/${e}`} key={e}>
-                      {countryMap ? countryMap[e] : e}
-                    </Link>
-                  </>
+                  <Link to={`/countries/${e}`} key={i}>
+                    {countryMap ? countryMap[e] : e}
+                  </Link>
                 ))}
               </>
             ) : (
